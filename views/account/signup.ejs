@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title><%= title %></title>
+        <link rel="stylesheet" href="css/bootstrap.min.css" />
+    </head>
+
+    <body>
+        <div class="vh-100 d-flex justify-content-center align-items-center">
+            <div class="container">
+                <div class="row d-flex justify-content-center">
+                    <div class="col-12 col-md-8 col-lg-6">
+                        <div class="card bg-white shadow-lg">
+                            <div class="card-body p-5">
+                                <form class="mb-3 mt-md-4" method="post">
+                                    <h2 class="fw-bold mb-2 text-uppercase">Sign Up</h2>
+                                    <p class="mb-5">Please enter a valid email and password to create an account.</p>
+                                    <%- include('../partials/flash') %>
+                                    <div class="mb-3 form-floating">
+                                        <input
+                                            type="email"
+                                            class="form-control"
+                                            id="email"
+                                            name="email"
+                                            autofocus
+                                            required
+                                        />
+                                        <label for="email">Email address</label>
+                                    </div>
+                                    <div class="mb-3 form-floating">
+                                        <input
+                                            type="name"
+                                            class="form-control"
+                                            id="firstName"
+                                            name="firstName"
+                                            minlength="2"
+                                            required
+                                        />
+                                        <label for="firstName">First Name</label>
+                                    </div>
+                                    <div class="mb-3 form-floating">
+                                        <input
+                                            type="password"
+                                            class="form-control"
+                                            id="password"
+                                            name="password"
+                                            autocomplete="new-password"
+                                            minlength="8"
+                                            required
+                                        />
+                                        <label for="password">Password</label>
+                                    </div>
+                                    <div class="mb-3 form-floating">
+                                        <input
+                                            type="password"
+                                            class="form-control"
+                                            id="confirmPassword"
+                                            name="confirmPassword"
+                                            autocomplete="new-password"
+                                            minlength="8"
+                                            required
+                                        />
+                                        <label for="password">Confirm Password</label>
+                                    </div>
+                                    <div class="d-grid">
+                                        <button class="btn btn-dark" type="submit">Sign Up</button>
+                                    </div>
+                                </form>
+                                <div>
+                                    <p class="mb-0 text-center">
+                                        Already have an account?
+                                        <a href="login" class="text-primary fw-bold">Log In</a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

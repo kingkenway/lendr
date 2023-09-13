@@ -1,0 +1,45 @@
+version: '3.4'
+
+services:
+  nodeexpressstarter:
+    image: nodeexpressstarter
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    env_file: .env
+    ports:
+      - 8080:8080
+    links:
+      - mongodb
+    depends_on:
+      - mongodb
+    volumes:
+      - .:/usr/src/app
+      - nodemodules:/usr/src/app/node_modules
+    environment:
+      WAIT_HOSTS: mongodb:27017
+    networks:
+      - node-webapp-network
+
+  mongodb:
+      container_name: mongodb
+      image: mongo:6.0
+      volumes:
+        - mongo-dbdata:/data/db
+        - mongo-configdata:/data/configdb
+      ports:
+        - "27017:27017"
+      environment:
+        - MONGO_INITDB_ROOT_USERNAME=admin
+        - MONGO_INITDB_ROOT_PASSWORD=password
+      networks:
+        - node-webapp-network
+
+networks:
+  node-webapp-network:
+    driver: bridge
+
+volumes:
+  mongo-dbdata:
+  mongo-configdata:
+  nodemodules:
